@@ -11,6 +11,5 @@ logger = logging.getLogger(__name__)
 
 __author__ = 'hjf'
 
-
 class OwerListView(ListView):
     paginate_by = 15

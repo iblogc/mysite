@@ -6,7 +6,7 @@ import misaka as m
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 
-__author__ = 'korvin101'
+__author__ = 'hjf'
 
 
 class HighlighterRenderer(m.HtmlRenderer):
