@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from __future__ import absolute_import
+from django.contrib.auth.models import User
 
 from django.db import models
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 import logging
 
@@ -14,8 +15,8 @@ __author__ = 'korvin101'
 
 
 class TimeInfo(models.Model):
-    created_at = models.DateTimeField(_('创建时间'), auto_now_add=True)
-    updated_at = models.DateTimeField(_('更新时间'), auto_now=True)
+    created_at = models.DateTimeField('创建时间', auto_now_add=True)
+    updated_at = models.DateTimeField('更新时间', auto_now=True)
 
     class Meta:
         abstract = True

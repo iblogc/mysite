@@ -7,20 +7,30 @@ from .base import *
 
 __author__ = 'hjf'
 
-DEBUG = True
-
-sys.path.append("/home/bae/app/deps/")
-
+DEBUG = False
+# sys.path.append('%s%s' % (BASE_DIR, '\\extra_apps'))
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-ALLOWED_HOSTS = ['*']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'sqld.duapp.com',
-        'NAME': 'knPZBhcSkBsgzQanRlsU',
-        'USER': 'CDa87592bf3fb11696292e89e5838180',
-        'PASSWORD': '7305205bbdc097fd795909621b45051e',
+        'NAME': 'jNLPmQSqASqkpIqXUldz',
+        'USER': '6037271862624b19a6c3b39f4b8d5679',
+        'PASSWORD': '77da48be7e63418a97737723aa41487e',
         'PORT': '4050',
     }
 }
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'localhost',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'PORT': '3306',
+    }
+}
+'''
 LOGGING = {}
