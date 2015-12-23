@@ -13,13 +13,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
 from django.core.wsgi import get_wsgi_application
 
-# if 'SERVER_SOFTWARE' in os.environ:  # BAE
-#     from bae.core.wsgi import WSGIApplication
-#
-#     application = WSGIApplication(get_wsgi_application())
-# else:
-#     application = get_wsgi_application()
+if 'SERVER_SOFTWARE' in os.environ:  # BAE
+    from bae.core.wsgi import WSGIApplication
 
-from bae.core.wsgi import WSGIApplication
-
-application = WSGIApplication(get_wsgi_application())
+    application = WSGIApplication(get_wsgi_application())
+else:
+    application = get_wsgi_application()
