@@ -3,3 +3,4 @@ django==1.9
 django-uuslug==1.1.6
 Pygments==2.0.2
 django-bootstrap3==6.2.2
+Pillow==3.0.0

@@ -23,7 +23,8 @@ class PostAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'title', 'content_raw', 'is_markdown', 'category', 'tags')
+                'title', 'cover', 'content_raw', 'is_markdown', 'category',
+                'tags')
         }),
         (_('高级选项'), {
             # 'description': _('说明'),

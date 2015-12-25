@@ -61,6 +61,8 @@ class Post(TimeInfo):
                              default='', help_text=_('长度在50字以内'),
                              error_messages={'max_length': _('标题太长了')}
                              )
+    cover = models.ImageField(_('封面'), max_length=50, \
+                              blank=True)
     content_raw = models.TextField(_('博文内容（markdown格式）'), default='')
     content_html = models.TextField(_('博文内容（html格式）'), blank=True,
                                     editable=False, default='')
