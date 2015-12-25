@@ -1,1 +1,0 @@
-INSERT INTO post (title, content_raw) VALUES ('John', 'Lennon');
