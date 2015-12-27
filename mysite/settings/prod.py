@@ -7,7 +7,7 @@ from .base import *
 
 __author__ = 'hjf'
 
-DEBUG = False
+DEBUG = True
 
 # sys.path.append("/home/bae/app/deps/")
 sys.path.append('%s%s' % (BASE_DIR, '\\deps'))
