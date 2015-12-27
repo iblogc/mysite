@@ -5,10 +5,12 @@
 {#    <script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>#}
 {% endblock %}
 {% block main %}
-    <div class="aaabbb">
+    <div>
 
         <h2>{{ post.title }}</h2>
+        内容
         <p>{{ post.content_html|safe }}</p>
+        原始内容
         <p>{{ post.content_html }}</p>
     </div>
 {% endblock %}
