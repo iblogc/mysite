@@ -11,7 +11,7 @@ DEBUG = False
 
 # sys.path.append("/home/bae/app/deps/")
 sys.path.append('%s%s' % (BASE_DIR, '\\deps'))
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
