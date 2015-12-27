@@ -20,6 +20,7 @@ class HighlighterRenderer(m.HtmlRenderer):
 
         return highlight(text, lexer, formatter)
 
+
 renderer = HighlighterRenderer()
 # renderer = HighlighterRenderer()
 md = m.Markdown(renderer, extensions=('fenced-code', 'tables', 'footnotes',

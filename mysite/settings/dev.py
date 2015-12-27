@@ -10,6 +10,19 @@ __author__ = 'hjf'
 
 DEBUG = True
 STATIC_ROOT = ''
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysite',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
 # 日志配置
 LOGGING = {
     'version': 1,
