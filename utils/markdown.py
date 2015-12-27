@@ -23,7 +23,8 @@ class HighlighterRenderer(m.HtmlRenderer):
 
 renderer = HighlighterRenderer()
 # renderer = HighlighterRenderer()
-md = m.Markdown(renderer, extensions=('fenced-code', 'tables', 'footnotes',
-                                      'autolink', 'strikethrough', 'underline',
-                                      'quote', 'superscript', 'math',
-                                      'highlight'))
+md = m.Markdown(renderer, extensions=('fenced-code',))
+# md = m.Markdown(renderer, extensions=('fenced-code', 'tables', 'footnotes',
+#                                       'autolink', 'strikethrough', 'underline',
+#                                       'quote', 'superscript', 'math',
+#                                       'highlight'))
