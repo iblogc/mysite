@@ -11,13 +11,6 @@ class PostDetail(DetailView):
     model = Post
     context_object_name = 'post'
 
-    def get_object(self, queryset=None):
-        obj = super(PostDetail, self).get_object()
-        obj.content_html = md(obj.content_raw)
-        print obj.content_html
-        print 456789
-        return obj
-
 class PostList(OwerListView):
     model = Post
     context_object_name = 'posts'
