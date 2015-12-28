@@ -11,6 +11,7 @@
     <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css"
           rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/code/monokai.css' %}"/>
+
     <style>
         #nprogress .bar {
             background: blue;
@@ -90,6 +91,14 @@
         NProgress.done();
     })
 </script>
+{% load staticfiles %}
+<script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>
+<script src="//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="//cdn.bootcss.com/flowchart/1.4.2/flowchart.min.js"></script>
+<script src="{% static 'js/uml-converter.js' %}"></script>
+<script src="{% static 'js/flow-loader.js' %}"></script>
+<script src="{% static 'js/sequence-loader.js' %}"></script>
 {% block footjs %}{% endblock %}
 </body>
 </html>
