@@ -16,11 +16,11 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'sqld.duapp.com',
-        'NAME': 'knPZBhcSkBsgzQanRlsU',
-        'USER': 'CDa87592bf3fb11696292e89e5838180',
-        'PASSWORD': '7305205bbdc097fd795909621b45051e',
-        'PORT': '4050',
+        'HOST': 'rds09tgm35r28edg2y0m.mysql.rds.aliyuncs.com',
+        'NAME': 'rds09tgm35r28edg2y0m',
+        'USER': 'btn3wq9lrg28agwd',
+        'PASSWORD': 'wYT4r6T2dYNZWpju',
+        'PORT': '3306',
     }
 }
 LOGGING = {}

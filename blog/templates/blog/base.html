@@ -90,15 +90,11 @@
     $(document).on('pjax:complete', function () {
         NProgress.done();
     })
+    $(document).on('pjax:end', function () {
+        convertUML('uml-flowchart', flowchart);
+        convertUML('uml-sequence-diagram', Diagram, {theme: 'simple'});
+    })
 </script>
-{% load staticfiles %}
-<script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>
-<script src="//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
-<script src="//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
-<script src="//cdn.bootcss.com/flowchart/1.4.2/flowchart.min.js"></script>
-<script src="{% static 'js/uml-converter.js' %}"></script>
-<script src="{% static 'js/flow-loader.js' %}"></script>
-<script src="{% static 'js/sequence-loader.js' %}"></script>
 {% block footjs %}{% endblock %}
 </body>
 </html>

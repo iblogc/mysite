@@ -9,11 +9,13 @@ from .base import *
 __author__ = 'hjf'
 
 DEBUG = True
+
 STATIC_ROOT = ''
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -24,6 +26,46 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+# 本地内存缓存
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION': 'unique-snowflake',
+#     }
+# }
+
+# 虚拟的缓存，开发时用，不会产生缓存效果
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+INSTALLED_APPS += ('debug_toolbar',)
+
+MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+DEBUG_TOOLBAR_CONFIG = {'JQUERY_URL':'//cdn.bootcss.com/jquery/2.1.4/jquery.min.js'}
 
 # 日志配置
 LOGGING = {

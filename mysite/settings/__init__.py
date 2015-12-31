@@ -7,9 +7,9 @@ import sys
 __author__ = 'hjf'
 
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 if 'SERVER_SOFTWARE' in os.environ:
-    from .prod import *
+    from .bae import *
 else:
     from .dev import *

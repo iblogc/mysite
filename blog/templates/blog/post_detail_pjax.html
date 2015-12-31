@@ -1,5 +1,18 @@
+{% load post_extrax %}
 <h2>{{ post.title }}</h2>
 转换内容
 <p>{{ post.content_html|safe }}</p>
-原始内容
-<p>{{ post.content_raw }}</p>
+
+分类：{{ post.category }}
+标签：{{ post.tags.all|splite_tag }}
+标签：{% generate_tag post.tags.all %}
+{% a 'ssss' %}
+
+{% load static %}
+<script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>
+<script src="//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="//cdn.bootcss.com/flowchart/1.4.2/flowchart.min.js"></script>
+<script src="{% static 'js/uml-converter.js' %}"></script>
+<script src="{% static 'js/flow-loader.js' %}"></script>
+<script src="{% static 'js/sequence-loader.js' %}"></script>

@@ -13,9 +13,7 @@ def pjax(func=None, pjax_template=None):
             resp = func(request, *args, **kwargs)
             if 'HTTP_X_PJAX' in request.META:
                 resp.template_name = pjax_template
-                print 111
                 print pjax_template
-            print 222
             return resp
         return return_wrapper
 
