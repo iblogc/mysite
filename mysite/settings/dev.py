@@ -16,16 +16,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysite',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'mysite',
+#         'USER': 'root',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 # 本地内存缓存
 # CACHES = {
