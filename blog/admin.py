@@ -42,6 +42,7 @@ class PostAdmin(admin.ModelAdmin):
     )
 
     def save_model(self, request, obj, form, change):
+        obj.save()
         # 文章作者为当前编辑用户，先于Model里的save执行
         tags = form.cleaned_data['tags_str']
         for name in tags:
