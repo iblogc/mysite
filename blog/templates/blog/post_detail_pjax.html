@@ -1,11 +1,27 @@
 {% load post_extrax %}
-<h2>{{ post.title }}</h2>
-转换内容
-<p class="flow-text">{{ post.content_html|safe }}</p>
+{% load static %}
 
-分类：{{ post.category }}
-标签：{{ post.tags.all|splite_tag }}
-标签：{% generate_tag post.tags.all %}
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-content">
+                <p>
+
+                <h2>{{ post.title }}</h2>
+
+                <div class="chip">
+                    <img src="{% static 'images/headimg.jpg' %}"
+                         alt="Contact Person">
+                    iblogc
+                </div>
+                分类：{{ post.category }}
+                {% generate_tag post.tags.all %}
+                <p class="flow-text">{{ post.content_html|safe }}</p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% load static %}
 <script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>

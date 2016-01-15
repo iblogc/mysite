@@ -1,3 +1,5 @@
 {% for tag in tags %}
-    <a href="{{ tag.get_absolute_url }}">#{{ tag.name }}#</a>
+<div class="chip">
+    <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
+</div>
 {% endfor %}
