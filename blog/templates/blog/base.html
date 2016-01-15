@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-{% load bootstrap3 %}
 {% load staticfiles %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +10,27 @@
     <link rel="stylesheet" href="{% static 'css/code/monokai.css' %}"/>
     <link href="//cdn.bootcss.com/materialize/0.97.5/css/materialize.min.css"
           rel="stylesheet">
+    <link href="{% static 'materialize/css/materialize.min.css' %}"
+          rel="stylesheet">
     <style>
+        html {
+            font-family: GillSans, Calibri, Trebuchet, sans-serif;
+        }
+
+        header, main, footer {
+            padding-left: 240px;
+        }
+
+        @media only screen and (max-width: 992px) {
+            header, main, footer {
+                padding-left: 0;
+            }
+        }
+
+        .parallax-container {
+            height: 300px;
+        }
+
         #nprogress .bar {
             background: blue;
         }
@@ -28,25 +45,73 @@
     {% block headjs %}{% endblock %}
 </head>
 <body>
-<div class="container">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{% url 'blog:post_list' %}">主题</a></li>
-                <li><a href="">分类 <span class="new badge">4</span></a></li>
-                <li><a href="">关于</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container" id="pjax-container">
-        {% block main %}{% endblock %}
+<div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static 'images/b.jpg' %}"></div>
     </div>
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">Parallax</h2>
+
+            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect
+                where the background content or image in this case, is moved at
+                a different speed than the foreground content while
+                scrolling.</p>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i
+                    class="mdi-navigation-menu"></i></a>
+
+            <div id="pjax-container">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <!--sidenav start-->
+
+    <ul id="slide-out" class="side-nav">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Dropdown<i
+                            class="mdi-navigation-arrow-drop-down"></i></a>
+
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!">First</a></li>
+                            <li><a href="#!">Second</a></li>
+                            <li><a href="#!">Third</a></li>
+                            <li><a href="#!">Fourth</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="right hide">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i
+                class="mdi-navigation-arrow-drop-down right"></i></a></li>
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">First</a></li>
+            <li><a href="#!">Second</a></li>
+            <li><a href="#!">Third</a></li>
+            <li><a href="#!">Fourth</a></li>
+        </ul>
+    </ul>
+    <!--sidenav end-->
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
 <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+<script src="//cdn.bootcss.com/materialize/0.97.5/js/materialize.min.js"></script>
 <script>
+    $(".button-collapse").sideNav();
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+
     $.pjax.defaults.maxCacheLength = 200000000;
     $(document).pjax('a', '#pjax-container');
     $(document).on('pjax:send', function () {
@@ -60,7 +125,6 @@
         convertUML('uml-sequence-diagram', Diagram, {theme: 'simple'});
     })
 </script>
-<script src="//cdn.bootcss.com/materialize/0.97.5/js/materialize.min.js"></script>
 {% block footjs %}{% endblock %}
 </body>
 </html>

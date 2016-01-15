@@ -1,7 +1,7 @@
 {% load post_extrax %}
 <h2>{{ post.title }}</h2>
 转换内容
-<p>{{ post.content_html|safe }}</p>
+<p class="flow-text">{{ post.content_html|safe }}</p>
 
 分类：{{ post.category }}
 标签：{{ post.tags.all|splite_tag }}

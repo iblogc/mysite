@@ -5,25 +5,17 @@
     <title></title>
 </head>
 <body>
-{# Load the tag library #}
-{% load bootstrap3 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
+{#{% bootstrap_messages %}#}
 
 {# Display a form #}
 <form action="" method="post" class="form">
   {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-    <button type="submit" class="btn btn-primary">
-      {% bootstrap_icon "star" %} Submit
-    </button>
-  {% endbuttons %}
+  {{ form }}
+    <input type="file" name="abc">
+    <input type="submit" value="提交">
 </form>
 </body>
 </html>
