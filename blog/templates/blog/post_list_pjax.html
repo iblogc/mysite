@@ -4,7 +4,7 @@
             <div class="card hoverable ">
                 <div class="card-content black-text">
                     <span class="card-title ">{{ post.title }}</span>
-                    <p>{{ post.content_html|striptags|truncatechars_html:300 }}</p>
+                    <p>{{ post.content_html|truncatechars_html:200|safe }}</p>
                 </div>
                 <div class="card-action">
                     <a href="{{ post.get_absolute_url}}">阅读全文</a>
