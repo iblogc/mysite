@@ -6,7 +6,7 @@
     'use strict';
 
     function html_unescape(text) {
-        // Unescape a string that was escaped using django.utils.html.escape.
+        // Unescape a string that was escaped using django.outil.html.escape.
         text = text.replace(/&lt;/g, '<');
         text = text.replace(/&gt;/g, '>');
         text = text.replace(/&quot;/g, '"');
@@ -85,7 +85,7 @@
 
     function dismissAddRelatedObjectPopup(win, newId, newRepr) {
         // newId and newRepr are expected to have previously been escaped by
-        // django.utils.html.escape.
+        // django.outil.html.escape.
         newId = html_unescape(newId);
         newRepr = html_unescape(newRepr);
         var name = windowname_to_id(win.name);

@@ -14,9 +14,13 @@
           rel="stylesheet">
     <style>
 
-        #pjax-container {
-            transition: width 1s ease-in;
-            -webkit-transition: width 1s ease-in; /* Safari */
+        {#        #pjax-container {#}
+        {#            transition: width 1s ease-in;#}
+        {#            -webkit-transition: width 1s ease-in; /* Safari */#}
+        {#        }#}
+
+        .container {
+            max-width: 700.5px;
         }
 
         header, main, footer {
@@ -48,35 +52,34 @@
     {% block headjs %}{% endblock %}
 </head>
 <body>
-<div class="fixed-action-btn horizontal click-to-toggle" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large red">
-      <i class="large mdi-navigation-menu"></i>
+<div class="fixed-action-btn horizontal click-to-toggle"
+     style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large waves-effect waves-light red">
+        <i class="large mdi-navigation-menu"></i>
     </a>
-    <ul>
-      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-    </ul>
-  </div>
+</div>
 <div>
     <div class="parallax-container">
         <div class="parallax"><img src="{% static 'images/1.jpg' %}"></div>
     </div>
     <div class="section white">
         <div class="row container">
-            <h2 class="header"><a href="{% url 'blog:post_list' %}">首页</a></h2>
-
-            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect
-                where the background content or image in this case, is moved at
-                a different speed than the foreground content while
-                scrolling.</p>
-            {#            <a href="#" data-activates="slide-out" class="button-collapse"><i#}
-            {#                    class="mdi-navigation-menu"></i></a>#}
-
+            <a href="{% url 'blog:post_list' %}">首页</a>
             <div id="pjax-container">
                 {% block main %}{% endblock %}
             </div>
+
+
+            {#            <h2 class="header"><a href="{% url 'blog:post_list' %}">首页</a></h2>#}
+            {##}
+            {#            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect#}
+            {#                where the background content or image in this case, is moved at#}
+            {#                a different speed than the foreground content while#}
+            {#                scrolling.</p>#}
+            {#            <a href="#" data-activates="slide-out" class="button-collapse"><i#}
+            {#                    class="mdi-navigation-menu"></i></a>#}
+
+
         </div>
     </div>
     <!--sidenav start-->
@@ -117,17 +120,39 @@
     <!--sidenav end-->
 </div>
 <script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+{#<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>#}
 <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
 <script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+<script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>
+<script src="//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="//cdn.bootcss.com/flowchart/1.4.2/flowchart.min.js"></script>
+<script src="{% static 'js/uml-converter.js' %}"></script>
+<script src="{% static 'js/flow-loader.js' %}"></script>
+<script src="{% static 'js/sequence-loader.js' %}"></script>
+<script src="{% static 'js/jquery.pjax.js' %}"></script>
+{#<script src="{% static 'js/stickUp.min.js' %}"></script>#}
+{#<script src="//cdn.bootcss.com/jquery.sticky/1.0.3/jquery.sticky.min.js"></script>#}
 <script>
+    // 选项卡初始化
+    {#    $(document).ready(function(){#}
+    {#        $('ul.tabs').tabs();#}
+    {#      });#}
+
     //侧边栏显示隐藏按钮
     $(".button-collapse").sideNav();
 
     //效果大图
     $(document).ready(function () {
         $('.parallax').parallax();
+        {#        $(".tab-stick").sticky({topSpacing:0});#}
     });
+    {#     jQuery(function($) {#}
+    {#                $(document).ready( function() {#}
+    {#                  //enabling stickUp on the '.navbar-wrapper' class#}
+    {#                  $('.tab-stick').stickUp();#}
+    {#                });#}
+    {#              });#}
 
     //显示页面时隐藏单篇文章进度条
     $('.progress').hide()
@@ -137,8 +162,10 @@
         $('.progress').show();
     });
 
-    $.pjax.defaults.maxCacheLength = 200000000;
+    $.pjax.defaults.maxCacheLength = 20;
     $(document).pjax('a', '#pjax-container');
+{#    $(document).pjax({'selector':'a', 'container':'#pjax-container'});#}
+
     $(document).on('pjax:send', function () {
         NProgress.start();
     })
@@ -150,6 +177,10 @@
     $(document).on('pjax:end', function () {
         convertUML('uml-flowchart', flowchart);
         convertUML('uml-sequence-diagram', Diagram, {theme: 'simple'});
+        //打开弹出窗口
+        $('.modal-trigger').leanModal();
+        //tabs
+        $('ul.tabs').tabs();
     })
 
 </script>

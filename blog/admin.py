@@ -45,8 +45,10 @@ class PostAdmin(admin.ModelAdmin):
         obj.save()
         # 文章作者为当前编辑用户，先于Model里的save执行
         tags = form.cleaned_data['tags_str']
-        for name in tags:
-            obj.tags.add(Tag.objects.get_or_create(name=name)[0])
+        if tags:
+            tags = map(lambda name: Tag.objects.get_or_create(name=name)[0],
+                       tags)
+            obj.tags = tags
         obj.author = request.user
         obj.save()
 

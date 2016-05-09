@@ -9,7 +9,7 @@ from blog.models import Post
 from common.views import OwerListView
 
 
-def latest_post(request, slug):
+def latest_post_time(request, slug):
     return Post.objects.get(slug=slug).updated_at
 
 
@@ -17,7 +17,7 @@ class PostDetail(DetailView):
     model = Post
     context_object_name = 'post'
 
-    # @method_decorator(last_modified(latest_post))
+    @method_decorator(last_modified(latest_post_time))
     def get(self, request, *args, **kwargs):
         return super(PostDetail, self).get(request, *args, **kwargs)
 

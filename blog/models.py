@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from __future__ import absolute_import
+import time
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
@@ -9,7 +10,7 @@ from django.db import models
 
 from common.models import TimeInfo
 from uuslug import uuslug
-from utils.markdown import md
+from outil.markdown import md
 
 ___author__ = 'korvin101'
 
@@ -54,6 +55,14 @@ class Tag(models.Model):
         super(Tag, self).save(*args, **kwargs)
 
 
+class PostManager(models.Manager):
+
+    def set_top(self, **kwargs):
+        """置顶文章"""
+        return self.filter(**kwargs).update(sequence=1000,
+                                            updated_at=time.time.now())
+
+
 @python_2_unicode_compatible
 class Post(TimeInfo):
     """文章表"""
@@ -72,6 +81,8 @@ class Post(TimeInfo):
     category = models.ForeignKey(Category, models.SET_NULL,
                                  verbose_name=_('归档'),
                                  blank=True, null=True)
+    sequence = models.SmallIntegerField(_('排序号'), default=0,
+                                        help_text=_('数字越大越靠前，默认最大999'))
     slug = models.SlugField(max_length=50, unique=True)
     author = models.ForeignKey('auth.User', on_delete=models.SET_NULL,
                                blank=True, null=True, verbose_name=_('作者'))
@@ -80,6 +91,9 @@ class Post(TimeInfo):
     tags = models.ManyToManyField(Tag, verbose_name=_('标签'), blank=True)
 
     allow_comment = models.BooleanField(_('允许评论'), default=True)
+
+    objects = models.Manager()
+    own_objects = PostManager()
 
     class Meta:
         db_table = 'post'
@@ -98,3 +112,8 @@ class Post(TimeInfo):
         self.slug = uuslug(self.title, instance=self)
         self.content_html = md(self.content_raw)
         super(Post, self).save(*args, **kwargs)
+
+    def set_top(self):
+        """置顶文章"""
+        self.sequence = 1000
+        super(Post, self).save(update_fields=['sequence', 'updated_at'])

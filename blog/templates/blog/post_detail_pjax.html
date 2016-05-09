@@ -1,33 +1,49 @@
 {% load post_extrax %}
 {% load static %}
-
 <div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-content">
-                <p>
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#post">文章</a>
+            </li>
+            <li class="tab col s3"><a href="#toc">目录</a></li>
+        </ul>
+    </div>
+    <div id="post" class="col s12">
+        <div class="col">
+            <div class="card">
+                <div class="card-content">
+                    <p>
 
-                <h2>{{ post.title }}</h2>
+                    <h2>{{ post.title }}</h2>
 
-                <div class="chip">
-                    <img src="{% static 'images/headimg.jpg' %}"
-                         alt="Contact Person">
-                    iblogc
+                    <div class="chip">
+                        <img src="{% static 'images/iblogc.png' %}"
+                             alt="Contact Person">
+                        {{ post.author }}
+                    </div>
+                    分类：{{ post.category }}
+                    {% generate_tag post.tags.all %}
+                    <p class="flow-text">{{ post.content_html|safe }}</p>
+                    </p>
                 </div>
-                分类：{{ post.category }}
-                {% generate_tag post.tags.all %}
-                <p class="flow-text">{{ post.content_html|safe }}</p>
-                </p>
             </div>
         </div>
     </div>
+    <div id="toc" class="col s12">Test 3</div>
 </div>
 
-{% load static %}
-<script src="//cdn.bootcss.com/raphael/2.1.4/raphael-min.js"></script>
-<script src="//cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
-<script src="//cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
-<script src="//cdn.bootcss.com/flowchart/1.4.2/flowchart.min.js"></script>
-<script src="{% static 'js/uml-converter.js' %}"></script>
-<script src="{% static 'js/flow-loader.js' %}"></script>
-<script src="{% static 'js/sequence-loader.js' %}"></script>
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!"
+           class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>

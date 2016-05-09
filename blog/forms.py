@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from __future__ import absolute_import
-from django.core.checks import Tags
 
 from django.utils.translation import ugettext as _
 from django import forms
@@ -15,7 +14,7 @@ __author__ = 'hjf'
 
 
 class PostForm(forms.ModelForm):
-    tags_str = forms.CharField(label=_('标签'), max_length=100)
+    tags_str = forms.CharField(label=_('标签'), max_length=100,required=False)
 
     class Meta:
         model = Post

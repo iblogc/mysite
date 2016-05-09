@@ -1,20 +1,31 @@
-{% for post in posts %}
-    <div class="row">
-        <div class="col">
-            <div class="card hoverable ">
-                <div class="card-content black-text">
-                    <span class="card-title ">{{ post.title }}</span>
-                    <p>{{ post.content_html|truncatechars_html:200|safe }}</p>
-                </div>
-                <div class="card-action">
-                    <a href="{{ post.get_absolute_url}}">阅读全文</a>
-                    {#              <a href="#">This is a link</a>#}
-                </div>
-                <div class="progress">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
-        </div>
+<div class="row">
+    <div class="col s12 tab-stick" style="z-index: 999">
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#post_list">首页</a>
+            </li>
+            <li class="tab col s3"><a href="#about_me">关于</a></li>
+        </ul>
     </div>
+    <div id="post_list" class="col s12">
+        {% for post in posts %}
+                <div class="col s12 m12">
+                    <div class="card hoverable">
+                        <div class="card-content black-text">
+                            <span class="card-title ">{{ post.title }}</span>
 
-{% endfor %}
+                            <p>{{ post.content_html|truncatechars_html:200|safe }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ post.get_absolute_url }}">阅读全文</a>
+                            {#              <a href="#">This is a link</a>#}
+                        </div>
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </div>
+
+        {% endfor %}
+    </div>
+    <div id="about_me" class="col s12">about me and blog</div>
+</div>
