@@ -1,4 +1,4 @@
-django==1.9
+Django==1.10.1
 MySQL-python==1.2.3
 django-uuslug==1.1.6
 Pygments==2.0.2

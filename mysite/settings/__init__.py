@@ -5,7 +5,6 @@ import os
 import sys
 
 __author__ = 'hjf'
-
 reload(sys)
 sys.setdefaultencoding("utf-8")
 

@@ -60,7 +60,7 @@ MIDDLEWARE_CLASSES = [
 USE_ETAGS = True
 
 ROOT_URLCONF = 'mysite.urls'
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+# from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
